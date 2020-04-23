@@ -1,45 +1,63 @@
 <?php
 
-namespace omnilight\sypexgeo;
+namespace sbs\behaviors;
 
+use sbs\components\SypexGeo;
 use yii\base\Behavior;
+use yii\base\Component;
 use yii\base\InvalidConfigException;
 use yii\web\Request;
 
-
 /**
- * Class GeoBehavior is the behavior for {@see yii\web\Request} class that provides functions of detecting
- * request geo information based on it's IP address
+ * Class GeoBehavior is the behavior for {@see Request} class that provides functions of detecting
+ * request geo information based on it's IP address.
  */
 class GeoBehavior extends Behavior
 {
     /**
-     * @var string|array|SypexGeo If string, than the name of the application component,
-     * if array - configuration for SypexGeo class
+     * If string, than the name of the application component
+     * If array - configuration for SypexGeo class.
+     *
+     * @var array|string
      */
-    public $sypexGeo = 'sypexGeo';
+    public $config = 'sypexGeo';
 
-    public function init()
+    /**
+     * @var SypexGeo
+     */
+    protected $sypexGeo;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function init(): void
     {
         parent::init();
 
-        if (is_string($this->sypexGeo)) {
-            $this->sypexGeo = \Yii::$app->get($this->sypexGeo);
-        } elseif (is_array($this->sypexGeo)) {
-            $this->sypexGeo = \Yii::createObject(array_merge([
-                'class' => SypexGeo::className(),
-            ], $this->sypexGeo));
+        if (\is_string($this->config)) {
+            $this->sypexGeo = \Yii::$app->get($this->config);
+        }
+
+        if (\is_array($this->config)) {
+            $this->sypexGeo = \Yii::createObject(\array_merge([
+                'class' => SypexGeo::class,
+            ], $this->config));
         }
     }
 
-    public function attach($owner)
+    /**
+     * @param Component $owner
+     *
+     * @throws InvalidConfigException
+     */
+    public function attach($owner): void
     {
-        if (!($owner instanceof Request))
+        if (!$owner instanceof Request) {
             throw new InvalidConfigException('GeoBehavior can be only attached to the yii\web\Request and it\'s children');
+        }
 
         parent::attach($owner);
     }
-
 
     /**
      * @return array|bool false if city is not detected
@@ -58,7 +76,7 @@ class GeoBehavior extends Behavior
     }
 
     /**
-     * @return integer
+     * @return int
      */
     public function getCountryId()
     {
@@ -74,12 +92,13 @@ class GeoBehavior extends Behavior
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     protected function getIP()
     {
         /** @var Request $owner */
         $owner = $this->owner;
+
         return $owner->getUserIP();
     }
-} 
+}
