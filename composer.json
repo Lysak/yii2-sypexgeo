@@ -1,22 +1,39 @@
 {
-    "name": "omnilight/yii2-sypexgeo",
+    "name": "sbs/yii2-sypexgeo",
     "description": "Yii2 extension for Sypex Geo API (http://sypexgeo.net)",
-    "keywords": ["yii2", "sypexgeo", "geo"],
-    "minimum-stability": "dev",
+    "keywords": ["yii2", "sypexgeo", "geo", "extension", "module"],
+    "homepage": "https://github.com/koftikes/yii2-sypexgeo",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/koftikes/yii2-sypexgeo/issues"
+    },
     "authors": [
+        {
+            "name": "Konstantin Litvinov",
+            "email": "koftikes@gmail.com",
+            "homepage": "http://sbsweb.ru"
+        },
         {
             "name": "Pavel Agalecky",
             "email": "pavel.agalecky@gmail.com"
         }
     ],
-    "type": "yii2-extension",
-    "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2": "*"
-    },
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "omnilight\\sypexgeo\\": ""
+            "sbs\\": "src"
         }
-    }
+    },
+    "require": {
+        "php": ">=7.2",
+        "yiisoft/yii2": "^2.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "repositories": [
+        {"type": "composer", "url": "https://asset-packagist.org"}
+    ]
 }

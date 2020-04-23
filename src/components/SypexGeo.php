@@ -1,14 +1,13 @@
 <?php
 
-namespace omnilight\sypexgeo;
+namespace sbs\components;
 
-use omnilight\sypexgeo\vendor\SxGeo;
+use sbs\domain\SxGeo;
 use yii\base\Component;
-
 
 /**
  * Class SypexGeo is the wrapper for the SxGeo class that provides ability to use it as
- * application component
+ * application component.
  *
  * @property SxGeo $sxGeo Direct access to the SxGeo class
  */
@@ -18,19 +17,24 @@ class SypexGeo extends Component
      * @var SxGeo
      */
     protected $_sxGeo;
+
     /**
-     * Path to to the database file for Sypex Geo
+     * Path to to the database file for Sypex Geo.
+     *
      * @var string
      */
     public $database;
+
     /**
-     * Access mode to the Sypex database
+     * Access mode to the Sypex database.
+     *
      * @var int
      */
     public $accessMode = SxGeo::SXGEO_FILE;
 
     /**
-     * @param string $ip
+     * @param null|string $ip
+     *
      * @return array|bool false if city is not detected
      */
     public function getCity($ip)
@@ -39,7 +43,8 @@ class SypexGeo extends Component
     }
 
     /**
-     * @param $ip
+     * @param null|string $ip
+     *
      * @return array
      */
     public function getCountry($ip)
@@ -48,8 +53,9 @@ class SypexGeo extends Component
     }
 
     /**
-     * @param string $ip
-     * @return integer
+     * @param null|string $ip
+     *
+     * @return int
      */
     public function getCountryId($ip)
     {
@@ -57,7 +63,8 @@ class SypexGeo extends Component
     }
 
     /**
-     * @param string $ip
+     * @param null|string $ip
+     *
      * @return array
      */
     public function getCityFull($ip)
@@ -70,9 +77,10 @@ class SypexGeo extends Component
      */
     public function getSxGeo()
     {
-        if ($this->_sxGeo === null) {
+        if (null === $this->_sxGeo) {
             $this->_sxGeo = new SxGeo(\Yii::getAlias($this->database), $this->accessMode);
         }
+
         return $this->_sxGeo;
     }
-} 
+}

@@ -1,0 +1,8 @@
+parameters:
+    checkMissingIterableValueType: false
+    ignoreErrors:
+        - '#Access to static property \$app on an unknown class Yii.#'
+        - '#Call to static method [a-zA-Z0-9\\_]+\(\) on an unknown class Yii.#'
+    excludes_analyse:
+        #TODO: This code from http://sypexgeo.net/ru/download/ need to be fixed later
+        - %currentWorkingDirectory%/src/domain/*
