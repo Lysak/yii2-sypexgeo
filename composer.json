@@ -1,5 +1,5 @@
 {
-    "name": "sbs/yii2-sypexgeo",
+    "name": "lysak/yii2-sypexgeo",
     "description": "Yii2 extension for Sypex Geo API (http://sypexgeo.net)",
     "keywords": ["yii2", "sypexgeo", "geo", "extension", "module"],
     "homepage": "https://github.com/koftikes/yii2-sypexgeo",
@@ -22,7 +22,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "sbs\\": "src"
+            "lysak\\": "src"
         }
     },
     "require": {

@@ -11,13 +11,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist sbs/yii2-sypexgeo "*"
+php composer.phar require --prefer-dist lysak/yii2-sypexgeo "*"
 ```
 
 or add
 
 ```json
-"sbs/yii2-sypexgeo": "^1.0"
+"lysak/yii2-sypexgeo": "^1.0"
 ```
 
 to the `require` section of your composer.json.
@@ -52,7 +52,7 @@ You can use it as an application component:
 [
     'components' => [
         'sypexGeo' => [
-            'class' => 'sbs\components\SypexGeo',
+            'class' => 'lysak\components\SypexGeo',
             'database' => '@app/data/SxGeoCity.dat',
         ]
     ]
@@ -65,7 +65,7 @@ $city = Yii::$app->sypexGeo->getCity($ip);
 Also, you can create an instance by yourself:
 
 ```php
-use sbs\components\SypexGeo;
+use lysak\components\SypexGeo;
 // ...
 $sypexGeo = new SypexGeo([
     'database' => '@app/data/SxGeoCity.dat',
@@ -84,7 +84,7 @@ Example:
     'components' => [
         'request' => [
             'as sypexGeo' => [
-                'class' => 'sbs\behaviors\GeoBehavior',
+                'class' => 'lysak\behaviors\GeoBehavior',
                 // It is not required property if you have SypexGeo component defined in your application
                 'config' => [
                     'database' => '@app/data/SxGeoCity.dat',

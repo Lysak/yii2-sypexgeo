@@ -1,8 +1,8 @@
 <?php
 
-namespace sbs\behaviors;
+namespace lysak\behaviors;
 
-use sbs\components\SypexGeo;
+use lysak\components\SypexGeo;
 use yii\base\Behavior;
 use yii\base\Component;
 use yii\base\InvalidConfigException;

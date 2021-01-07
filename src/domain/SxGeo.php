@@ -1,6 +1,6 @@
 <?php
 
-namespace sbs\domain;
+namespace lysak\domain;
 
 /**
  * Sypex Geo                version 2.2.3

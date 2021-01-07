@@ -1,8 +1,8 @@
 <?php
 
-namespace sbs\components;
+namespace lysak\components;
 
-use sbs\domain\SxGeo;
+use lysak\domain\SxGeo;
 use yii\base\Component;
 
 /**
